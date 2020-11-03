@@ -62,6 +62,8 @@ func startServer() {
 		userProvider = authentication.NewFileUserProvider(config.AuthenticationBackend.File)
 	case config.AuthenticationBackend.Ldap != nil:
 		userProvider = authentication.NewLDAPUserProvider(*config.AuthenticationBackend.Ldap)
+	case config.AuthenticationBackend.External != nil:
+		userProvider = authentication.NewExternalUserProvider(config.AuthenticationBackend.External)
 	default:
 		logging.Logger().Fatalf("Unrecognized authentication backend")
 	}

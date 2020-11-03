@@ -117,6 +117,9 @@ var validKeys = []string{
 	"authentication_backend.file.password.memory",
 	"authentication_backend.file.password.parallelism",
 
+	// External Authentication Backend Keys.
+	"authentication_backend.external.executable",
+
 	// Secret Keys.
 	"authelia.jwt_secret",
 	"authelia.duo_api.secret_key",
