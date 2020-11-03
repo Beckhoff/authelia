@@ -73,7 +73,7 @@ duo_api:
 # and retrieve information such as email address and groups
 # users belong to.
 #
-# There are two supported backends: 'ldap' and 'file'.
+# There are three supported backends: 'ldap', 'file' and 'external'
 authentication_backend:
   # Disable both the HTML element and the API for reset password functionality
   disable_reset_password: false
@@ -204,6 +204,15 @@ authentication_backend:
   ##     salt_length: 16
   ##     memory: 1024
   ##     parallelism: 8
+
+  # External authentication backend configuration.
+  # 
+  # Username and password are passed to an external tool 
+  # that determines whether the data entered is valid.
+  #
+  ## external:
+  ##   executeable: pwauth
+
 # Access Control
 #
 # Access control is a list of rules defining the authorizations applied for one
