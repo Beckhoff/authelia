@@ -10,20 +10,36 @@ import (
 	"github.com/authelia/authelia/internal/utils"
 )
 
-// ValidateAuthenticationBackend validates and update authentication backend configuration.
 func ValidateAuthenticationBackend(configuration *schema.AuthenticationBackendConfiguration, validator *schema.StructValidator) {
-	if configuration.LDAP == nil && configuration.File == nil {
-		validator.Push(errors.New("Please provide `ldap` or `file` object in `authentication_backend`"))
-	}
+	var nAuthBackendsConfigured int = 0
 
-	if configuration.LDAP != nil && configuration.File != nil {
-		validator.Push(errors.New("You cannot provide both `ldap` and `file` objects in `authentication_backend`"))
+	if configuration.LDAP != nil {
+		nAuthBackendsConfigured++
 	}
 
 	if configuration.File != nil {
+		nAuthBackendsConfigured++
+	}
+
+	if configuration.External != nil {
+		nAuthBackendsConfigured++
+	}
+
+	if nAuthBackendsConfigured == 0 {
+		validator.Push(errors.New("Please provide `ldap`, `file` or `external` object in `authentication_backend`"))
+	}
+
+	if nAuthBackendsConfigured > 1 {
+		validator.Push(errors.New("You cannot provide multiple `ldap`, `file` or `external` objects in `authentication_backend`"))
+	}
+
+	switch {
+	case configuration.File != nil:
 		validateFileAuthenticationBackend(configuration.File, validator)
-	} else if configuration.LDAP != nil {
-		validateLDAPAuthenticationBackend(configuration.LDAP, validator)
+	case configuration.LDAP != nil:
+		validateLdapAuthenticationBackend(configuration.LDAP, validator)
+	case configuration.External != nil:
+		validateExternalAuthenticationBackend(configuration.External, validator)
 	}
 
 	if configuration.RefreshInterval == "" {
@@ -255,5 +271,12 @@ func setDefaultImplementationCustomLDAPAuthenticationBackend(configuration *sche
 
 	if configuration.DisplayNameAttribute == "" {
 		configuration.DisplayNameAttribute = schema.DefaultLDAPAuthenticationBackendConfiguration.DisplayNameAttribute
+	}
+}
+
+//nolint:gocyclo // TODO: Consider refactoring/simplifying, time permitting.
+func validateExternalAuthenticationBackend(configuration *schema.ExternalAuthenticationBackendConfiguration, validator *schema.StructValidator) {
+	if configuration.Executable == "" {
+		validator.Push(errors.New("Please provide an `executable` for the external file in `authentication_backend`"))
 	}
 }

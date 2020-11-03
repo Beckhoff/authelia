@@ -192,6 +192,9 @@ var validKeys = []string{
 	"authentication_backend.file.password.memory",
 	"authentication_backend.file.password.parallelism",
 
+	// External Authentication Backend Keys.
+	"authentication_backend.external.executable",
+
 	// Identity Provider Keys.
 	"identity_providers.oidc.clients",
 }

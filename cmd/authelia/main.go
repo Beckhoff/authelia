@@ -92,8 +92,16 @@ func startServer() {
 		userProvider = authentication.NewFileUserProvider(config.AuthenticationBackend.File)
 	case config.AuthenticationBackend.LDAP != nil:
 		userProvider = authentication.NewLDAPUserProvider(*config.AuthenticationBackend.LDAP, autheliaCertPool)
+	case config.AuthenticationBackend.External != nil:
+		userProvider = authentication.NewExternalUserProvider(config.AuthenticationBackend.External)
 	default:
 		logger.Fatalf("Unrecognized authentication backend")
+	}
+
+	if config.AuthenticationBackend.External != nil {
+		if !config.AuthenticationBackend.DisableResetPassword {
+			logging.Logger().Fatalf("Authentication backend 'external' does not support resetting the password!")
+		}
 	}
 
 	var notifier notification.Notifier

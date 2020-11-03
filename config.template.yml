@@ -88,7 +88,7 @@ duo_api:
 ##
 ## Used for verifying user passwords and retrieve information such as email address and groups users belong to.
 ##
-## The available providers are: `file`, `ldap`. You must use only one of these providers.
+## The available providers are: `file`, `ldap` and `external`. You must use only one of these providers.
 authentication_backend:
   ## Disable both the HTML element and the API for reset password functionality.
   disable_reset_password: false
@@ -224,6 +224,15 @@ authentication_backend:
   #     salt_length: 16
   #     memory: 1024
   #     parallelism: 8
+
+  ##
+  ## External authentication backend configuration.
+  ##
+  ## Username and password are passed to an external tool
+  ## that determines whether the data entered is valid.
+  ##
+  # external:
+  #   executeable: pwauth
 
 ##
 ## Access Control Configuration
