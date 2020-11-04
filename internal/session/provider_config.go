@@ -21,8 +21,10 @@ func NewProviderConfig(configuration schema.SessionConfiguration, certPool *x509
 	// Override the cookie name.
 	config.CookieName = configuration.Name
 
-	// Set the cookie to the given domain.
-	config.Domain = configuration.Domain
+	if configuration.Domain != "*" {
+		// Set the cookie to the given domain.
+		config.Domain = configuration.Domain
+	}
 
 	// Set the cookie SameSite option.
 	switch configuration.SameSite {

@@ -53,10 +53,6 @@ func validateSession(configuration *schema.SessionConfiguration, validator *sche
 		validator.Push(errors.New("Set domain of the session object"))
 	}
 
-	if strings.Contains(configuration.Domain, "*") {
-		validator.Push(errors.New("The domain of the session must be the root domain you're protecting instead of a wildcard domain"))
-	}
-
 	if configuration.SameSite == "" {
 		configuration.SameSite = schema.DefaultSessionConfiguration.SameSite
 	} else if configuration.SameSite != "none" && configuration.SameSite != "lax" && configuration.SameSite != "strict" {

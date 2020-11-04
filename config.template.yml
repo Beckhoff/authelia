@@ -337,6 +337,14 @@ access_control:
         - "^/users/bob/.*$"
       subject: "user:bob"
       policy: two_factor
+      
+    # Rules applied to any domain(*) and user bob
+    ## - domain: "*"
+    ##   policy: one_factor
+    ##   resources:
+    ##     - "^/users/bob/.*$"
+    ##   subject:
+    ##     - "user:bob"
 
 ##
 ## Session Provider Configuration

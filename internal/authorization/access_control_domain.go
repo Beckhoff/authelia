@@ -27,6 +27,6 @@ func (acd AccessControlDomain) IsMatch(subject Subject, object Object) (match bo
 
 		return suffix == acd.Name && utils.IsStringInSliceFold(prefix, subject.Groups)
 	default:
-		return object.Domain == acd.Name
+		return object.Domain == acd.Name || acd.Name == "*"
 	}
 }
