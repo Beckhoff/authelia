@@ -11,8 +11,10 @@ func IsRedirectionSafe(url url.URL, protectedDomain string) bool {
 		return false
 	}
 
-	if !strings.HasSuffix(url.Hostname(), protectedDomain) {
-		return false
+	if protectedDomain != "localhost" {
+		if !strings.HasSuffix(url.Hostname(), protectedDomain) {
+			return false
+		}
 	}
 
 	return true

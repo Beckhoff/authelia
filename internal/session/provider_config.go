@@ -19,8 +19,10 @@ func NewProviderConfig(configuration schema.SessionConfiguration) ProviderConfig
 	// Override the cookie name.
 	config.CookieName = configuration.Name
 
-	// Set the cookie to the given domain.
-	config.Domain = configuration.Domain
+	if configuration.Domain != "localhost" {
+		// Set the cookie to the given domain.
+		config.Domain = configuration.Domain
+	}
 
 	// Only serve the header over HTTPS.
 	config.Secure = true

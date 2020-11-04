@@ -19,6 +19,10 @@ import (
 )
 
 func isURLUnderProtectedDomain(url *url.URL, domain string) bool {
+	if domain == "localhost" {
+		return true;
+	}
+
 	return strings.HasSuffix(url.Hostname(), domain)
 }
 
