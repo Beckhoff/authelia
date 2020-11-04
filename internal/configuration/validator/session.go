@@ -46,8 +46,4 @@ func ValidateSession(configuration *schema.SessionConfiguration, validator *sche
 	if configuration.Domain == "" {
 		validator.Push(errors.New("Set domain of the session object"))
 	}
-
-	if strings.Contains(configuration.Domain, "*") {
-		validator.Push(errors.New("The domain of the session must be the root domain you're protecting instead of a wildcard domain"))
-	}
 }
