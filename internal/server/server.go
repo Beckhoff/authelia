@@ -30,7 +30,7 @@ func StartServer(configuration schema.Configuration, providers middlewares.Provi
 	rememberMe := strconv.FormatBool(configuration.Session.RememberMeDuration != "0")
 	resetPassword := strconv.FormatBool(!configuration.AuthenticationBackend.DisableResetPassword)
 
-	rootFiles := []string{"favicon.ico", "manifest.json", "robots.txt"}
+	rootFiles := []string{"favicon.png", "manifest.json", "robots.txt"}
 
 	serveIndexHandler := ServeTemplatedFile(embeddedAssets, indexFile, configuration.Server.Path, configuration.Session.Name, rememberMe, resetPassword)
 	serveSwaggerHandler := ServeTemplatedFile(swaggerAssets, indexFile, configuration.Server.Path, configuration.Session.Name, rememberMe, resetPassword)
