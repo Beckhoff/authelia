@@ -44,6 +44,26 @@ const LoginLayout = function (props: Props) {
                     ) : null}
                 </Grid>
             </Container>
+            <div
+                style={{
+                    background: "linear-gradient(to right bottom, rgba(169,186,194,1), rgba(255,255,255,0) 50%)",
+                    position: "fixed",
+                    top: "0px",
+                    left: "0px",
+                    height: "400px",
+                    width: "400px",
+                }}
+            ></div>
+            <div
+                style={{
+                    background: "linear-gradient(to left top, rgba(169,186,194,1), rgba(255,255,255,0) 50%)",
+                    position: "fixed",
+                    bottom: "0px",
+                    right: "0px",
+                    height: "400px",
+                    width: "400px",
+                }}
+            ></div>
         </Grid>
     );
 };
@@ -62,8 +82,8 @@ const useStyles = makeStyles((theme) => ({
     title: {},
     icon: {
         margin: theme.spacing(),
-        width: "64px",
-        fill: theme.custom.icon,
+        width: "380px",
+        height: "120px",
     },
     body: {
         marginTop: theme.spacing(),

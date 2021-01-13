@@ -37,8 +37,10 @@ function Theme() {
             return themes.Dark;
         case "grey":
             return themes.Grey;
-        default:
+        case "light":
             return themes.Light;
+        default:
+            return themes.Bhf;
     }
 }
 

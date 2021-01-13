@@ -53,7 +53,7 @@ func ValidateConfiguration(configuration *schema.Configuration, validator *schem
 	}
 
 	if configuration.Theme == "" {
-		configuration.Theme = "light"
+		configuration.Theme = "bhf"
 	}
 
 	ValidateTheme(configuration, validator)

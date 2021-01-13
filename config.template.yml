@@ -17,8 +17,8 @@ port: 9091
 ## They should be in base64 format, and have one of the following extensions: *.cer, *.crt, *.pem.
 # certificates_directory: /config/certificates
 
-## The theme to display: light, dark, grey.
-theme: light
+## The theme to display: light, dark, grey, bhf.
+theme: bhf
 
 ##
 ## Server Configuration

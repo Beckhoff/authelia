@@ -9,8 +9,8 @@ import (
 
 // ValidateTheme validates and update Theme configuration.
 func ValidateTheme(configuration *schema.Configuration, validator *schema.StructValidator) {
-	validThemes := regexp.MustCompile("light|dark|grey")
+	validThemes := regexp.MustCompile("light|dark|grey|bhf")
 	if !validThemes.MatchString(configuration.Theme) {
-		validator.Push(fmt.Errorf("Theme: %s is not valid, valid themes are: \"light\", \"dark\" or \"grey\"", configuration.Theme))
+		validator.Push(fmt.Errorf("Theme: %s is not valid, valid themes are: \"light\", \"dark\", \"grey\" or \"bhf\"", configuration.Theme))
 	}
 }

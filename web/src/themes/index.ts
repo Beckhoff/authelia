@@ -16,3 +16,4 @@ declare module "@material-ui/core/styles/createMuiTheme" {
 export { default as Light } from "./Light";
 export { default as Dark } from "./Dark";
 export { default as Grey } from "./Grey";
+export { default as Bhf } from "./Bhf";
