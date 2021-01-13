@@ -2,8 +2,17 @@ import React, { ReactNode } from "react";
 
 import { Grid, makeStyles, Container, Typography, Link } from "@material-ui/core";
 import { grey } from "@material-ui/core/colors";
+import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
 import { ReactComponent as UserSvg } from "../assets/images/user.svg";
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: "#E2001A",
+        },
+    },
+});
 
 export interface Props {
     id?: string;
@@ -15,34 +24,36 @@ export interface Props {
 const LoginLayout = function (props: Props) {
     const style = useStyles();
     return (
-        <Grid id={props.id} className={style.root} container spacing={0} alignItems="center" justify="center">
-            <Container maxWidth="xs" className={style.rootContainer}>
-                <Grid container>
-                    <Grid item xs={12}>
-                        <UserSvg className={style.icon}></UserSvg>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Typography variant="h5" className={style.title}>
-                            {props.title}
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={12} className={style.body}>
-                        {props.children}
-                    </Grid>
-                    {props.showBrand ? (
+        <ThemeProvider theme={theme}>
+            <Grid id={props.id} className={style.root} container spacing={0} alignItems="center" justify="center">
+                <Container maxWidth="xs" className={style.rootContainer}>
+                    <Grid container>
                         <Grid item xs={12}>
-                            <Link
-                                href="https://github.com/authelia/authelia"
-                                target="_blank"
-                                className={style.poweredBy}
-                            >
-                                Powered by Authelia
-                            </Link>
+                            <UserSvg className={style.icon}></UserSvg>
                         </Grid>
-                    ) : null}
-                </Grid>
-            </Container>
-        </Grid>
+                        <Grid item xs={12}>
+                            <Typography variant="h5" className={style.title}>
+                                {props.title}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={12} className={style.body}>
+                            {props.children}
+                        </Grid>
+                        {props.showBrand ? (
+                            <Grid item xs={12}>
+                                <Link
+                                    href="https://github.com/authelia/authelia"
+                                    target="_blank"
+                                    className={style.poweredBy}
+                                >
+                                    Powered by Authelia
+                                </Link>
+                            </Grid>
+                        ) : null}
+                    </Grid>
+                </Container>
+            </Grid>
+        </ThemeProvider>
     );
 };
 
@@ -61,7 +72,8 @@ const useStyles = makeStyles((theme) => ({
     title: {},
     icon: {
         margin: theme.spacing(),
-        width: "64px",
+        width: "380px",
+        height: "120px",
     },
     body: {},
     poweredBy: {
