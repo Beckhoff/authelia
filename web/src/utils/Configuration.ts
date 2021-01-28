@@ -14,3 +14,7 @@ export function getRememberMe() {
 export function getResetPassword() {
     return getEmbeddedVariable("resetpassword") === "true";
 }
+
+export function getSystemUseNotification() {
+    return getEmbeddedVariable("systemusenotification");
+}

@@ -15,7 +15,7 @@ import {
     LogoutRoute,
 } from "./Routes";
 import { getBasePath } from "./utils/BasePath";
-import { getRememberMe, getResetPassword } from "./utils/Configuration";
+import { getRememberMe, getResetPassword, getSystemUseNotification } from "./utils/Configuration";
 import RegisterOneTimePassword from "./views/DeviceRegistration/RegisterOneTimePassword";
 import RegisterSecurityKey from "./views/DeviceRegistration/RegisterSecurityKey";
 import LoginPortal from "./views/LoginPortal/LoginPortal";
@@ -51,7 +51,11 @@ const App: React.FC = () => {
                         <SignOut />
                     </Route>
                     <Route path={FirstFactorRoute}>
-                        <LoginPortal rememberMe={getRememberMe()} resetPassword={getResetPassword()} />
+                        <LoginPortal
+                            rememberMe={getRememberMe()}
+                            resetPassword={getResetPassword()}
+                            systemUseNotification={getSystemUseNotification()}
+                        />
                     </Route>
                     <Route path="/">
                         <Redirect to={FirstFactorRoute} />

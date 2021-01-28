@@ -1,6 +1,7 @@
 import React, { MutableRefObject, useEffect, useRef, useState } from "react";
 
 import { makeStyles, Grid, Button, FormControlLabel, Checkbox, Link } from "@material-ui/core";
+import Paper from "@material-ui/core/Paper";
 import classnames from "classnames";
 import { useHistory } from "react-router";
 
@@ -15,6 +16,7 @@ export interface Props {
     disabled: boolean;
     rememberMe: boolean;
     resetPassword: boolean;
+    systemUseNotification: string;
 
     onAuthenticationStart: () => void;
     onAuthenticationFailure: () => void;
@@ -194,6 +196,9 @@ const FirstFactorForm = function (props: Props) {
                     >
                         Sign in
                     </Button>
+                </Grid>
+                <Grid item xs={12}>
+                    <Paper elevation={0}>{props.systemUseNotification}</Paper>
                 </Grid>
             </Grid>
         </LoginLayout>

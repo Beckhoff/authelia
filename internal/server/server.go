@@ -29,12 +29,13 @@ func StartServer(configuration schema.Configuration, providers middlewares.Provi
 	swaggerAssets := embeddedAssets + "api/"
 	rememberMe := strconv.FormatBool(configuration.Session.RememberMeDuration != "0")
 	resetPassword := strconv.FormatBool(!configuration.AuthenticationBackend.DisableResetPassword)
+	systemUseNotification := configuration.AuthenticationBackend.SystemUseNotification
 
 	rootFiles := []string{"favicon.png", "manifest.json", "robots.txt"}
 
-	serveIndexHandler := ServeTemplatedFile(embeddedAssets, indexFile, configuration.Server.Path, configuration.Session.Name, rememberMe, resetPassword)
-	serveSwaggerHandler := ServeTemplatedFile(swaggerAssets, indexFile, configuration.Server.Path, configuration.Session.Name, rememberMe, resetPassword)
-	serveSwaggerAPIHandler := ServeTemplatedFile(swaggerAssets, apiFile, configuration.Server.Path, configuration.Session.Name, rememberMe, resetPassword)
+	serveIndexHandler := ServeTemplatedFile(embeddedAssets, indexFile, configuration.Server.Path, configuration.Session.Name, rememberMe, resetPassword, systemUseNotification)
+	serveSwaggerHandler := ServeTemplatedFile(swaggerAssets, indexFile, configuration.Server.Path, configuration.Session.Name, rememberMe, resetPassword, systemUseNotification)
+	serveSwaggerAPIHandler := ServeTemplatedFile(swaggerAssets, apiFile, configuration.Server.Path, configuration.Session.Name, rememberMe, resetPassword, systemUseNotification)
 
 	r := router.New()
 	r.GET("/", serveIndexHandler)
