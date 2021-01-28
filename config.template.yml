@@ -102,6 +102,11 @@ authentication_backend:
   ## Refresh Interval docs: https://www.authelia.com/docs/configuration/authentication/ldap.html#refresh-interval
   refresh_interval: 5m
 
+  ## IEC62443 - CR 1.12 - System use notification
+  ## When a component provides local human user access/HMI, it shall provide the capability to display
+  ## a system use notification message before authenticating.
+  # system_use_notification: Access for authorized personnel only
+
   ##
   ## LDAP (Authentication Provider)
   ##

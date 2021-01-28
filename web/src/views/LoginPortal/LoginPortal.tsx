@@ -27,6 +27,7 @@ import SecondFactorForm from "./SecondFactor/SecondFactorForm";
 export interface Props {
     rememberMe: boolean;
     resetPassword: boolean;
+    systemUseNotification: string;
 }
 
 const LoginPortal = function (props: Props) {
@@ -134,6 +135,7 @@ const LoginPortal = function (props: Props) {
                         disabled={firstFactorDisabled}
                         rememberMe={props.rememberMe}
                         resetPassword={props.resetPassword}
+                        systemUseNotification={props.systemUseNotification}
                         onAuthenticationStart={() => setFirstFactorDisabled(true)}
                         onAuthenticationFailure={() => setFirstFactorDisabled(false)}
                         onAuthenticationSuccess={handleAuthSuccess}

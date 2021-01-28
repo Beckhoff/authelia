@@ -18,7 +18,7 @@ var alphaNumericRunes = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUV
 // ServeTemplatedFile serves a templated version of a specified file,
 // this is utilised to pass information between the backend and frontend
 // and generate a nonce to support a restrictive CSP while using material-ui.
-func ServeTemplatedFile(publicDir, file, base, rememberMe, resetPassword, session, theme string) fasthttp.RequestHandler {
+func ServeTemplatedFile(publicDir, file, base, rememberMe, resetPassword, session, theme, systemUseNotification string) fasthttp.RequestHandler {
 	logger := logging.Logger()
 
 	f, err := assets.Open(publicDir + file)
@@ -55,7 +55,7 @@ func ServeTemplatedFile(publicDir, file, base, rememberMe, resetPassword, sessio
 			ctx.Response.Header.Add("Content-Security-Policy", fmt.Sprintf("default-src 'self' ; object-src 'none'; style-src 'self' 'nonce-%s'", nonce))
 		}
 
-		err := tmpl.Execute(ctx.Response.BodyWriter(), struct{ Base, CSPNonce, RememberMe, ResetPassword, Session, Theme string }{Base: base, CSPNonce: nonce, RememberMe: rememberMe, ResetPassword: resetPassword, Session: session, Theme: theme})
+		err := tmpl.Execute(ctx.Response.BodyWriter(), struct{ Base, CSPNonce, RememberMe, ResetPassword, Session, Theme, SystemUseNotification string }{Base: base, CSPNonce: nonce, RememberMe: rememberMe, ResetPassword: resetPassword, Session: session, Theme: theme, SystemUseNotification: systemUseNotification})
 		if err != nil {
 			ctx.Error("An error occurred", 503)
 			logger.Errorf("Unable to execute template: %v", err)

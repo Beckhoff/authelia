@@ -4,4 +4,5 @@ document.body.setAttribute("data-basepath", "");
 document.body.setAttribute("data-rememberme", "true");
 document.body.setAttribute("data-resetpassword", "true");
 document.body.setAttribute("data-theme", "light");
+document.body.setAttribute("data-systemusenotification", "Access for authorized personnel only!");
 configure({ adapter: new Adapter() });

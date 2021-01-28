@@ -37,11 +37,12 @@ type PasswordConfiguration struct {
 
 // AuthenticationBackendConfiguration represents the configuration related to the authentication backend.
 type AuthenticationBackendConfiguration struct {
-	DisableResetPassword bool                                        `mapstructure:"disable_reset_password"`
-	RefreshInterval      string                                      `mapstructure:"refresh_interval"`
-	LDAP                 *LDAPAuthenticationBackendConfiguration     `mapstructure:"ldap"`
-	File                 *FileAuthenticationBackendConfiguration     `mapstructure:"file"`
-	External             *ExternalAuthenticationBackendConfiguration `mapstructure:"external"`
+	DisableResetPassword  bool                                        `mapstructure:"disable_reset_password"`
+	RefreshInterval       string                                      `mapstructure:"refresh_interval"`
+	SystemUseNotification string                                      `mapstructure:"system_use_notification"`
+	LDAP                  *LDAPAuthenticationBackendConfiguration     `mapstructure:"ldap"`
+	File                  *FileAuthenticationBackendConfiguration     `mapstructure:"file"`
+	External              *ExternalAuthenticationBackendConfiguration `mapstructure:"external"`
 }
 
 // ExternalAuthenticationBackendConfiguration represents the configuration related to the external authentication backend.

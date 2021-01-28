@@ -37,7 +37,7 @@ func ValidateAuthenticationBackend(configuration *schema.AuthenticationBackendCo
 	case configuration.File != nil:
 		validateFileAuthenticationBackend(configuration.File, validator)
 	case configuration.LDAP != nil:
-		validateLdapAuthenticationBackend(configuration.LDAP, validator)
+		validateLDAPAuthenticationBackend(configuration.LDAP, validator)
 	case configuration.External != nil:
 		validateExternalAuthenticationBackend(configuration.External, validator)
 	}

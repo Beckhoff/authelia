@@ -18,3 +18,7 @@ export function getResetPassword() {
 export function getTheme() {
     return getEmbeddedVariable("theme");
 }
+
+export function getSystemUseNotification() {
+    return getEmbeddedVariable("systemusenotification");
+}
