@@ -198,7 +198,9 @@ const FirstFactorForm = function (props: Props) {
                     </Button>
                 </Grid>
                 <Grid item xs={12}>
-                    <Paper elevation={0}>{props.systemUseNotification}</Paper>
+                    <Paper elevation={0} className={style.paperColor}>
+                        {props.systemUseNotification}
+                    </Paper>
                 </Grid>
             </Grid>
         </LoginLayout>
@@ -235,5 +237,8 @@ const useStyles = makeStyles((theme) => ({
     rightAlign: {
         textAlign: "right",
         verticalAlign: "bottom",
+    },
+    paperColor: {
+        background: "#DCE4E8",
     },
 }));

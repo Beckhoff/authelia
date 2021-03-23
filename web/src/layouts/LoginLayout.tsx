@@ -11,6 +11,9 @@ const theme = createMuiTheme({
         primary: {
             main: "#E2001A",
         },
+        background: {
+            default: "#DCE4E8",
+        },
     },
 });
 
@@ -25,6 +28,26 @@ const LoginLayout = function (props: Props) {
     const style = useStyles();
     return (
         <ThemeProvider theme={theme}>
+            <div
+                style={{
+                    background: "linear-gradient(to right bottom, rgba(169,186,194,1), rgba(255,255,255,0) 50%)",
+                    position: "fixed",
+                    top: "0px",
+                    left: "0px",
+                    height: "400px",
+                    width: "400px",
+                }}
+            ></div>
+            <div
+                style={{
+                    background: "linear-gradient(to left top, rgba(169,186,194,1), rgba(255,255,255,0) 50%)",
+                    position: "fixed",
+                    bottom: "0px",
+                    right: "0px",
+                    height: "400px",
+                    width: "400px",
+                }}
+            ></div>
             <Grid id={props.id} className={style.root} container spacing={0} alignItems="center" justify="center">
                 <Container maxWidth="xs" className={style.rootContainer}>
                     <Grid container>
